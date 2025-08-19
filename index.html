@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nelly's Projects - Academic Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #202122;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border-bottom: 1px solid #a2a9b1;
+            padding: 8px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 50%;
+            background: white;
+            padding: 3px;
+        }
+        
+        .logo h1 {
+            font-size: 20px;
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        
+        img{
+            max-width: 40%;
+            
+        }
+        
+        .NellyImage{
+            max-width: 100%;
+        }
+        
+        
+        
+        nav.main-nav ul {
+            display: flex;
+            list-style: none;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 8px;
+        }
+        
+        nav.main-nav li {
+            margin-right: 16px;
+        }
+        
+        nav.main-nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 14px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        nav.main-nav a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        /* Main Layout */
+        .main-layout {
+            display: flex;
+            margin-top: 16px;
+            gap: 16px;
+        }
+        
+        /* Sidebar Styles */
+        .sidebar {
+            width: 200px;
+            flex-shrink: 0;
+            background: linear-gradient(to bottom, #6a11cb, #2575fc);
+            padding: 16px 0;
+            border-radius: 8px;
+            color: white;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .sidebar-logo {
+            text-align: center;
+            margin-bottom: 24px;
+            padding: 0 16px;
+        }
+        
+        .sidebar-logo img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .sidebar-logo h2 {
+            margin-top: 12px;
+            font-weight: 500;
+            font-size: 18px;
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+        }
+        
+        .sidebar-menu li {
+            margin-bottom: 4px;
+        }
+        
+        .sidebar-menu a {
+            display: block;
+            padding: 8px 16px;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        
+        .sidebar-menu a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .sidebar-menu a i {
+            margin-right: 8px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Main Content Area */
+        .main-content {
+            flex-grow: 1;
+            background-color: #fff;
+            border: 1px solid #a2a9b1;
+            border-radius: 8px;
+            padding: 16px;
+            min-height: 500px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+        
+        .content-header {
+            border-bottom: 1px solid #eaecf0;
+            padding-bottom: 12px;
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .content-header h1 {
+            font-size: 24px;
+            font-weight: 500;
+            color: #202122;
+        }
+        
+        .content-tabs {
+            display: flex;
+            list-style: none;
+            border-bottom: 1px solid #eaecf0;
+            margin-bottom: 16px;
+        }
+        
+        .content-tabs li {
+            padding: 8px 16px;
+            border: 1px solid transparent;
+            border-bottom: none;
+            margin-right: 8px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .content-tabs li.active {
+            border-color: #a2a9b1;
+            background-color: #f8f9fa;
+            border-radius: 4px 4px 0 0;
+            color: #6a11cb;
+        }
+        
+        /* Content Sections */
+        .content-section {
+            display: none;
+            padding: 20px;
+            border: 1px solid #eaecf0;
+            border-radius: 4px;
+            margin-bottom: 20px;
+            background-color: #f8f9fa;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        .content-section h1 {
+            font-size: 28px;
+            color: #6a11cb;
+            margin-bottom: 16px;
+            border-bottom: 2px solid #6a11cb;
+            padding-bottom: 8px;
+        }
+        
+        .content-section h2 {
+            font-size: 22px;
+            color: #2575fc;
+            margin: 20px 0 12px;
+        }
+        
+        .content-section p {
+            margin-bottom: 16px;
+            line-height: 1.7;
+        }
+        
+        .content-section .section-meta {
+            background: white;
+            padding: 12px;
+            border-radius: 4px;
+            border-left: 4px solid #6a11cb;
+            margin-bottom: 20px;
+        }
+        
+        /* Footer Styles */
+        footer {
+            margin-top: 30px;
+            padding: 20px 0;
+            border-top: 1px solid #a2a9b1;
+            font-size: 12px;
+            color: #54595d;
+            background: #f1f3f5;
+            border-radius: 0 0 8px 8px;
+        }
+        
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 10px;
+            justify-content: center;
+        }
+        
+        .footer-links a {
+            color: #3366cc;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer-info {
+            margin-top: 10px;
+            text-align: center;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-layout {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                order: 2;
+            }
+            
+            .header-top {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            
+            
+            .content-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .content-tabs {
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 16px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #6a11cb;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .about-me-content {
+            line-height: 1.8;
+        }
+        
+        .about-me-content p {
+            margin-bottom: 20px;
+        }
+        
+        .highlight {
+            background-color: rgba(106, 17, 203, 0.1);
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #6a11cb;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo">
+                    <img src="Untitled928_20250305144327-removebg-preview.png" alt="N Logo">
+                    <h1>Nelly's Project Hub</h1>
+                </div>
+                
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-layout">
+            <aside class="sidebar">
+                <div class="sidebar-logo">
+                    <img class = "NellyImage" src="72ee40f3-661a-40da-a6d2-8c9054cd2b8f.jpg" alt="Nelly's Photo">
+                    <h2>Nelly Almaktoum</h2>
+                    <p>High School graduate</p>
+                </div>
+                <ul class="sidebar-menu">
+                    <li><a href="#"><i class="fas fa-home"></i> Main page</a></li>
+                </ul>
+                
+                <h3 style="margin: 24px 0 8px 16px; font-size: 14px; font-weight: normal; color: rgba(255,255,255,0.8);">CONTACT</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="mailto:scifinel@gmail.com"><i class="fas fa-envelope"></i> Email</a></li>
+                    <li><a href="https://www.linkedin.com/in/nelly-almaktoum-a02349304?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    <li><a href="https://github.com/Nellyfmk"><i class="fab fa-github"></i> GitHub</a></li>
+                    <li><a href="https://x.com/scifinula?s=21"><i class="fab fa-twitter"></i> Twitter</a></li>
+                </ul>
+            </aside>
+            
+            <main class="main-content">
+                <div class="content-header">
+                    <h1>Nelly's Academic Portfolio</h1>
+                    <div class="social-links">
+                        <a href="https://github.com/Nellyfmk"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/nelly-almaktoum-a02349304?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://x.com/scifinula?s=21"><i class="fab fa-twitter"></i></a>
+                        <a href="mailto:scifinel@gmail.com"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                
+                <ul class="content-tabs">
+                    <li class="overview-tab">Overview</li>
+                    <li class="projects-tab">Projects</li>
+                </ul>
+                
+                <div class="content-section overview-section active">
+                    <h1>About Me</h1>
+                    <div class="about-me-content">
+                        <p>My name is Nelly Faisal Almaktoum, ID(1141013316) UniID(2615797) and I am deeply passionate about creating a positive impact in my community and far beyond through the use of combining my love for mathematics/technology. Where my first step was being nominated to the National Northern Mathematical Olympics (NNMO). My vision is to innovate sustainable solutions that will not only be life changing, but practical too, where I aspire to export my visions and solutions to other countries and make Jeddah greener and smarter.</p>
+                        <img src="image.png" alt="">
+                    </div>
+                </div>
+                
+                <div class="content-section project-section">
+                    <h1>Next-Gen Waste Management: A Novel Approach of Sustainable Cost-Effective Technological Innovations in Smart Bins</h1>
+                    <div class="section-meta">
+                        <p><strong>Technologies:</strong> Dull-language Ui screen, Odur control system, UltraSonic sensors, Solar-powered operation, LED indicators</p>
+                        <p><strong>Category:</strong> Green Technology</p>
+                    </div>
+                    
+                    <h2>My Research and Innovation: The Smart Waste Bin</h2>
+                    <p>The pioneering idea is an innovative concept of Next-Gen Waste Management: A Novel Approach of Sustainable Cost-Effective Technological Innovations in Smart Bins combines a number of sophisticated features:</p>
+                    <div class="section-meta">
+                        <p><strong>Dual-Language UI Screen: </strong> The User Interface (UI) on the smart bin is easy to understand and contains both written and graphic instructions and images in Arabic as well as English to make it accessible and inclusive.</p>
+                        <p><strong>Odor Control System: </strong> The smart  bin uses an external filtration process to neutralize bad odor which will leave the environment cleaner and more user friendly.</p>
+                        <p><strong>Ultrasonic Sensors: </strong> The smart  bin is connected to an IoT network to supply real-time notification to municipal services when the bin needs to be collected.</p>
+                        <p><strong>Solar-Powered Operation: </strong> The smart bins  system is solar-powered, and this minimizes the use of the non-renewable sources and ends up decreasing its effect on the environment.</p>
+                        <p><strong>LED Indicators: </strong> LED indicators in the smart bin serves to showcase to users its filled position.</p>
+                    </div>
+                    <img src="image2.png" alt="">
+                    <img src="image3.png" alt="">
+                    <img src="image4.png" alt="">
+                    <img src="image5.png" alt="">
+                    <h2>Recognition: International Young Researchers Award</h2>
+                    <p>I was honored to receive the International Young Researchers Award in Modern Technologies at COP16 led by the United Nations Convention to Combat Desertification (UNCCD), the Ministry of Environment, Water and Agriculture, and the National Center of Meteorology (NCM). Being the youngest of the seven winners to receive the award, I was proudly representing Saudi Arabia with 209 entries representing 36 countries in competition. This award underscores my smart waste management solution and its potential effect on the global environmental problem. </p>
+                    <img src="image6.png" alt="">
+                    <a href="https://x.com/ncmksa/status/1867220237566849266?s=46"><br>The announcement tweet on the NCM’s official X account. <br></a>
+                    <img src="image7.png" alt="">
+                    <img src="image8.png" alt="">
+                    <img src="image9.png" alt="">
+                    <img src="image10.png" alt="">
+                    <img src="image11.png" alt="">
+
+                    <h2>What I Did to Improve Myself After Receiving the Award?</h2>
+                    <p>Upon receiving this milestone, I undertook myself to continue to develop, and to expand aptly, on both a personal and professional level:</p>
+
+                    <h2>💡IEEE Ideation Competition</h2>
+                    <p>I attended the 22nd IEEE conference on international learning and technology. It was here I had the opportunity to pitch my idea to top technology professors and innovators all over the world and get great feedback and help develop my concept.</p>
+
+                    <img src="image12.png" alt="">
+
+                    <h2>🌍Local Innovation Exhibition</h2>
+                    <p>I also displayed my prototype in one of the local exhibitions where I received the attention of potential investors and industry professionals who believed that they have a bright future in the product as it aims to subvert the traditional waste streams.</p>
+
+                    <img src="image13.png" alt="">
+                    <img src="image14.png" alt="">
+                    <img src="image15.png" alt="">
+
+                    <h2>📜Intellectual Property Certification (In Progress)</h2>
+                    <p>To license my smart waste bin, I realized that registering it as an Intellectual Property (IP) is next in putting it into the market, thus launching a scale effect.</p>
+
+                    <img src="image16.png" alt="">
+
+                    <h2>Academic Background</h2>
+                    <p>I received my American High School Diploma at Dar Al Fikr (DAF) Schools after completing my high school years in the Mawhiba classes program, which gave me an excellent grounding in scientific thinking, research methodology and a global awareness all of which has been essential to formulating and progressing my own work.</p>
+
+                    <img src="image17.png" alt="">
+                    <img src="image18.png" alt="">
+                    <img src="image19.png" alt="">
+                    <img src="image20.png" alt="">
+                    <img src="image21.png" alt="">
+                    <img src="image22.png" alt="">
+
+
+                    <h2>Vision for the Future</h2>
+                    <p>My mission is to make my innovation global, to give this clean-tech solution to cities and communities across the world. I believe the youth of the country should drive connecting technologies with determination, and I am determined to achieve a smart and green future with the use of friendly to the environment technologies as one of the youngest award winning researchers.</p>
+
+                </div>
+                
+                <div class="content-section project-section">
+                    <h1>E-Commerce Mobile Application</h1>
+                    <div class="section-meta">
+                        <p><strong>Date:</strong> September 2022 - December 2022</p>
+                        <p><strong>Technologies:</strong> React Native, Node.js, MongoDB, Stripe API</p>
+                        <p><strong>Category:</strong> Mobile Development</p>
+                    </div>
+                    
+                    <h2>Project Overview</h2>
+                    <p>Designed and implemented a cross-platform mobile e-commerce application supporting product browsing, shopping cart, user authentication, and secure payment processing.</p>
+                    
+                    <h2>Key Features</h2>
+                    <p>The app includes user profiles with order history, product search and filtering, wishlist functionality, push notifications for sales, and integration with the Stripe payment processing system.</p>
+                    
+                    <h2>Technical Implementation</h2>
+                    <p>Frontend built with React Native and Redux for state management. Backend API developed with Node.js and Express, with MongoDB for data storage. Implemented JWT for authentication and encryption for secure data transmission.</p>
+                </div>
+                
+                <div class="content-section project-section">
+                    <h1>Smart Home IoT Automation System</h1>
+                    <div class="section-meta">
+                        <p><strong>Date:</strong> March 2022 - August 2022</p>
+                        <p><strong>Technologies:</strong> Arduino, Raspberry Pi, MQTT, React, Node.js</p>
+                        <p><strong>Category:</strong> Internet of Things</p>
+                    </div>
+                    
+                    <h2>Project Overview</h2>
+                    <p>Created an integrated IoT system for home automation that controls lighting, temperature, and security devices through a central hub with both web and mobile interfaces.</p>
+                    
+                    <h2>Key Features</h2>
+                    <p>The system supports voice commands, scheduled automation, energy usage monitoring, remote access via web interface, and real-time alerts for security events.</p>
+                    
+                    <h2>Technical Implementation</h2>
+                    <p>Used Arduino modules for sensor data collection and actuator control. Raspberry Pi serves as the central hub running Node.js with MQTT protocol for device communication. Web dashboard built with React for monitoring and control.</p>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            
+            <div class="footer-info">
+                <p>© 2023 Nelly's Academic Portfolio | Last updated: June 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.content-tabs li');
+            const contentSections = document.querySelectorAll('.content-section');
+            
+            // Show overview section by default
+            document.querySelector('.overview-section').classList.add('active');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Hide all content sections
+                    contentSections.forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    
+                    // Show corresponding content based on tab text
+                    const tabText = this.textContent.trim();
+                    if (tabText === 'Overview') {
+                        document.querySelector('.overview-section').classList.add('active');
+                    } else if (tabText === 'Projects') {
+                        document.querySelectorAll('.project-section')[0].classList.add('active');
+                    }
+                    // Add more conditions for other tabs if needed
+                });
+            });
+        });
+    </script>
+</body>
+</html>
